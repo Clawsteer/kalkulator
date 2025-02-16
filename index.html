@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalkulator Sederhana</title>
+    <style>
+
+      .calculator {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .button {
+        background-color: black;
+        border-radius: 10px;
+        height: 480px;
+        width: 295px;
+      }
+
+      .screen {
+        text-align: right;
+        font-size: 3em;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 20px solid black;
+        border-radius: 10px;
+        background: #eee;
+      }
+
+      button {
+        width: 60px;
+        height: 60px;
+        margin: 5px;
+        border-radius: 10px;
+      }
+
+      .equal {
+            background: green;
+            color: white;
+            width: 140px;
+        }
+
+        .null {
+            width: 130px;
+        }
+
+        .clear {
+            background: red;
+        }
+
+        .aneh {
+            background: orange;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="button">
+        <div class="screen" id="screen">0</div>
+        <div>
+          <button class="clear" onclick="clearScreen()">CE</button>
+          <button class="clear" onclick="clearScreen()">DEL</button>
+          <button onclick="appendValue('/')" class="aneh">÷</button>
+          <button onclick="appendValue('*')" class="aneh">x</button>
+        </div>
+        <div>
+          <button onclick="appendValue('7')">7</button>
+          <button onclick="appendValue('8')">8</button>
+          <button onclick="appendValue('9')">9</button>
+          <button onclick="appendValue('-')" class="aneh">-</button>
+        </div>
+        <div>
+          <button onclick="appendValue('4')">4</button>
+          <button onclick="appendValue('5')">5</button>
+          <button onclick="appendValue('6')">6</button>
+          <button onclick="appendValue('+')" class="aneh">+</button>
+        </div>
+        <div>
+          <button onclick="appendValue('1')">1</button>
+          <button onclick="appendValue('2')">2</button>
+          <button onclick="appendValue('3')">3</button>
+          <button onclick="appendValue('.')" class="aneh">.</button>
+        </div>
+        <div>
+          <button onclick="calculate()" class="equal">=</button>
+          <button onclick="appendValue('0')" class="null">0</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let screen = document.getElementById("screen");
+
+      function appendValue(value) {
+        if (screen.innerText === "0") {
+          screen.innerText = value;
+        } else {
+          screen.innerText += value;
+        }
+      }
+
+      function clearScreen() {
+        screen.innerText = "0";
+      }
+
+      function calculate() {
+        try {
+          screen.innerText = eval(screen.innerText);
+        } catch {
+          screen.innerText = "Error";
+        }
+      }
+    </script>
+  </body>
+</html>
